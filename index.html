@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0d">
+  <title>MANUKURA Year 10 Pūtaiao</title>
+  <meta name="description" content="Year 10 Pūtaiao learning and revision for MANUKURA: Forces and Motion, Chemistry, Body Systems and Science Skills.">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" data-route="home" aria-label="MANUKURA Year 10 Pūtaiao home">
+      <img src="assets/manukura-logo.png" alt="MANUKURA">
+      <span><strong>YEAR 10</strong><small>PŪTAIAO</small></span>
+    </a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><i></i><i></i><i></i><span class="sr-only">Open menu</span></button>
+    <nav id="site-nav" aria-label="Main navigation">
+      <a href="#home" data-route="home">Home</a>
+      <a href="#learn" data-route="learn">Learning</a>
+      <a href="#practicals" data-route="practicals">Practicals</a>
+      <a href="#progress" data-route="progress">My Progress</a>
+      <a href="#revise" data-route="revise">Revision</a>
+      <a href="#exam" data-route="exam">End-of-year Exam</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page active" data-page="home">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">KIA AORANGI AKE</p>
+          <h1>Year 10<br><span>Pūtaiao</span></h1>
+          <p class="hero-intro">Your lessons, practicals and revision from across the year. Pick up where class finished or prepare for the next assessment.</p>
+          <div class="hero-actions"><a class="primary-button" href="#learn" data-route="learn">Open the course</a><a class="text-button" href="#revise" data-route="revise">Start revising</a></div>
+        </div>
+        <div class="science-mark" aria-hidden="true"><div class="pulse-ring"></div><div class="pulse-ring two"></div><strong>Y10</strong><span>SCIENCE</span></div>
+      </div>
+
+      <div class="course-strip">
+        <div><span>01</span><p>Forces &amp; Motion</p></div>
+        <div><span>02</span><p>Chemistry</p></div>
+        <div><span>03</span><p>Body Systems</p></div>
+        <div><span>04</span><p>Exam Revision</p></div>
+      </div>
+
+      <section class="content-section">
+        <div class="section-heading"><p class="eyebrow dark">THE 2026 COURSE</p><h2>Choose a learning area</h2><p>Each learning area follows the ideas and investigations used in class. Learn the content first, then switch to revision when you are ready to test yourself.</p></div>
+        <div class="term-grid">
+          <button class="term-card force-card" data-open-term="forces"><span class="term-number">LEARNING AREA</span><div class="term-glyph">F</div><h3>Forces &amp; Motion</h3><p>Forces, speed, acceleration, graphs, work and Newton’s laws.</p><b>6 learning sections</b></button>
+          <button class="term-card chem-card" data-open-term="chemistry"><span class="term-number">LEARNING AREA</span><div class="term-glyph">C</div><h3>Chemistry</h3><p>Matter, atoms, the periodic table, pH, reactions and separation.</p><b>7 learning sections</b></button>
+          <button class="term-card body-card" data-open-term="body"><span class="term-number">LEARNING AREA</span><div class="term-glyph">B</div><h3>Body Systems</h3><p>Muscles, bones, joints, movement, exercise and gas exchange.</p><b>6 learning sections</b></button>
+          <button class="term-card exam-card" data-route="exam"><span class="term-number">WHOLE YEAR</span><div class="term-glyph">R</div><h3>Mixed Revision</h3><p>Key ideas from all three units, science skills and a practice test.</p><b>Exam preparation</b></button>
+        </div>
+      </section>
+
+      <section class="how-section">
+        <div><p class="eyebrow">USE THE SITE</p><h2>Learn it.<br>Retrieve it.<br>Apply it.</h2></div>
+        <div class="method-list">
+          <article><span>1</span><div><h3>Learn</h3><p>Read one short section and study the diagram or worked example.</p></div></article>
+          <article><span>2</span><div><h3>Retrieve</h3><p>Close the notes and answer the flashcards from memory.</p></div></article>
+          <article><span>3</span><div><h3>Apply</h3><p>Complete the quick check and explain why your answer is correct.</p></div></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="page" data-page="learn">
+      <div class="page-hero"><div><p class="eyebrow">AKO</p><h1>Learn</h1><p>Work through the same big ideas used in class.</p></div><div class="hero-index">01</div></div>
+      <div class="workspace">
+        <aside class="rail" aria-label="Course units">
+          <p>CHOOSE A UNIT</p>
+          <button data-term="forces">Learning area <strong>Forces &amp; Motion</strong></button>
+          <button data-term="chemistry">Learning area <strong>Chemistry</strong></button>
+          <button data-term="body">Learning area <strong>Body Systems</strong></button>
+        </aside>
+        <div class="learn-area">
+          <div id="unit-overview"></div>
+          <div id="lesson-tabs" class="lesson-tabs" role="tablist" aria-label="Learning sections"></div>
+          <article id="lesson-content" class="lesson-content"></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" data-page="progress">
+      <div class="page-hero progress-hero"><div><p class="eyebrow">AROTURUKI</p><h1>My Progress</h1><p>Your lesson ticks and best practice scores on this device.</p></div><div class="hero-index">03</div></div>
+      <div class="progress-content">
+        <div class="progress-boundary"><strong>This is your device record.</strong><p>Lesson ticks and practice scores help you manage your learning. Teacher-verified progress comes from released Google Forms checkpoints that collect your school email.</p></div>
+        <div class="student-details"><label>Your name<input id="student-name" autocomplete="name"></label><label>Class<input id="student-class" placeholder="10…"></label></div>
+        <div class="progress-key"><span class="status not-started">Not started</span><span class="status developing">Developing</span><span class="status secure">Secure</span><span class="status mastered">Mastered</span></div>
+        <div id="progress-grid" class="progress-grid"></div>
+        <section class="progress-share"><div><p class="eyebrow dark">WEEKLY CHECK-IN</p><h2>Share your progress</h2><p>Copy a dated summary for the progress assignment your kaiako provides.</p></div><div><button class="primary-button" id="copy-progress" type="button">Copy progress summary</button><p id="copy-feedback" aria-live="polite"></p></div></section>
+        <div class="teacher-note"><strong>For kaiako:</strong> add released Google Forms URLs in <code>checkpointLinks</code>. Keep answer keys private and use school-email collection for verified evidence.</div>
+      </div>
+    </section>
+
+    <section class="page" data-page="practicals">
+      <div class="page-hero practical-hero"><div><p class="eyebrow">RANGAHAU</p><h1>Practicals</h1><p>Aim, method, variables and the science behind each investigation.</p></div><div class="hero-index">02</div></div>
+      <div class="practical-content">
+        <div class="filter-row" role="group" aria-label="Filter practicals"><button class="active" data-practical-filter="all">All</button><button data-practical-filter="forces">Forces</button><button data-practical-filter="chemistry">Chemistry</button><button data-practical-filter="body">Body Systems</button></div>
+        <div id="practical-grid" class="practical-grid"></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="revise">
+      <div class="page-hero revision-hero"><div><p class="eyebrow">WHAKAMĀTAU</p><h1>Revise</h1><p>Short retrieval practice for one unit at a time.</p></div><div class="hero-index">03</div></div>
+      <div class="revision-workspace">
+        <div class="revision-controls">
+          <div><label for="revision-term">LEARNING AREA</label><select id="revision-term"><option value="forces">Forces &amp; Motion</option><option value="chemistry">Chemistry</option><option value="body">Body Systems</option></select></div>
+          <div class="mode-switch" role="group" aria-label="Revision mode"><button class="active" data-mode="cards">Flashcards</button><button data-mode="quiz">Quick check</button></div>
+        </div>
+        <div id="revision-stage"></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="exam">
+      <div class="page-hero exam-hero"><div><p class="eyebrow">WHAKARITE</p><h1>End-of-year</h1><p>Bring the year together and practise switching between topics.</p></div><div class="hero-index">04</div></div>
+      <div class="exam-content">
+        <section class="exam-map">
+          <div><p class="eyebrow dark">YOUR REVISION MAP</p><h2>Three units, one exam</h2><p>Start with your weakest unit. Use the checklist to find gaps, then attempt the mixed practice test without notes.</p></div>
+          <div class="checklist" id="exam-checklist"></div>
+        </section>
+        <section class="skills-band">
+          <div><p class="eyebrow">SCIENCE SKILLS</p><h2>Marks often sit in the method</h2></div>
+          <div class="skills-grid"><article><strong>Describe</strong><p>State what happens. Use the pattern or observation.</p></article><article><strong>Explain</strong><p>Give the science reason and connect it to the situation.</p></article><article><strong>Calculate</strong><p>Write the formula, substitute values, solve and include units.</p></article><article><strong>Evaluate</strong><p>Identify a limitation and give a specific improvement.</p></article></div>
+        </section>
+        <section class="practice-test"><div class="test-heading"><div><p class="eyebrow dark">MIXED PRACTICE TEST</p><h2>Test what you can retrieve</h2><p>15 questions. No notes on the first attempt.</p></div><button id="start-exam" class="primary-button">Start test</button></div><div id="exam-stage"></div></section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="practical-dialog"><button class="dialog-close" aria-label="Close practical">×</button><div id="dialog-content"></div></dialog>
+
+  <footer><div class="footer-brand"><img src="assets/manukura-logo.png" alt=""><p><strong>MANUKURA</strong><br>Year 10 Pūtaiao</p></div><p>Kia aorangi ake</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
