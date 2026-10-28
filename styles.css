@@ -39,3 +39,8 @@ footer{padding:35px clamp(24px,7vw,100px);display:flex;align-items:center;justif
 .exam-v3-nav button{display:flex;align-items:center;gap:12px;min-height:76px;padding:15px 22px;border:0;border-right:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;text-align:left;cursor:pointer;touch-action:manipulation}
 .exam-v3-nav button:last-child{border-right:0}.exam-v3-nav button b{color:var(--red);font:900 .8rem Montserrat}.exam-v3-nav button span{font-weight:900}.exam-v3-nav button:hover{background:#fff2f3}.exam-v3-nav button:focus-visible{outline:4px solid #ffbd57;outline-offset:-4px}
 @media(max-width:900px){.exam-v3-nav button{justify-content:center;padding:10px}.exam-v3-nav button span{display:none}}
+.v3-feedback:not(:empty){color:#17191c;background:#eef1f4}
+.v3-feedback[data-state=correct]{border-color:#25855a;background:#e7f5ed;color:#143d2b}
+.v3-feedback[data-state=retry]{border-color:#d62431;background:#fff0f1;color:#65131a}
+.v3-feedback[data-state=neutral]{border-color:#69727d;background:#eef1f4;color:#25282d}
+.v3-feedback[data-state=warn]{border-color:#c78417;background:#fff7e4;color:#593b08}
