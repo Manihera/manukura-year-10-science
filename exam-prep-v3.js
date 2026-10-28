@@ -8,20 +8,19 @@
         <p class="eyebrow">WHAKARITE • END-OF-YEAR</p>
         <h1>Build confidence.<br><span>Then prove it.</span></h1>
         <p>A guided preparation pathway across Forces &amp; Motion, Chemistry, Body Systems and Science Skills. The secure examination is not published here.</p>
-        <a class="primary-button" href="#v3-plan">Begin the pathway</a>
+        <button class="primary-button" type="button" data-v3-jump="v3-plan">Begin the pathway</button>
       </div>
       <div class="exam-v3-stats" aria-label="Practice structure">
-        <div><strong>24</strong><span>marked questions</span></div>
+        <div><strong>100</strong><span>question bank</span></div>
         <div><strong>6</strong><span>written responses</span></div>
-        <div><strong>4</strong><span>learning areas</span></div>
+        <div><strong>24</strong><span>questions per attempt</span></div>
       </div>
     </section>
 
     <nav class="exam-v3-nav" aria-label="Preparation steps">
-      <a href="#v3-plan"><b>01</b><span>Plan</span></a>
-      <a href="#v3-sharpen"><b>02</b><span>Sharpen</span></a>
-      <a href="#v3-practice"><b>03</b><span>Full practice</span></a>
-      <a href="#v3-print"><b>04</b><span>Print + review</span></a>
+      <button type="button" data-v3-jump="v3-plan"><b>01</b><span>Plan</span></button>
+      <button type="button" data-v3-jump="v3-sharpen"><b>02</b><span>Sharpen</span></button>
+      <button type="button" data-v3-jump="v3-practice"><b>03</b><span>Full practice</span></button>
     </nav>
 
     <div class="exam-v3-main">
@@ -69,7 +68,7 @@
           <span class="v3-step-no">03</span>
           <p class="eyebrow dark">THE MAIN PRACTICE</p>
           <h2>24 marked questions.<br>Then six written responses.</h2>
-          <p>Six questions come from each learning area. Your strongest score is saved, and missed ideas become a revision list.</p>
+          <p>Six questions come from each 25-question learning-area pool. Questions are held back between attempts so students see the full bank before it resets.</p>
           <div class="v3-test-spec"><span><b>6</b> Forces</span><span><b>6</b> Chemistry</span><span><b>6</b> Body</span><span><b>6</b> Skills</span></div>
         </div>
         <div class="v3-test-stage" id="v3-test-stage">
@@ -85,11 +84,11 @@
         </div>
       </section>
 
-      <section class="v3-step v3-print" id="v3-print">
-        <div><span class="v3-step-no">04</span><p class="eyebrow">PRINT + REVIEW</p><h2>Take the practice off-screen</h2><p>Paper A and Paper B are each 50 marks and 45 minutes. Sit one without notes, revise the gaps, then sit the second. Teacher schedules and the secure exam stay private.</p></div>
-        <a class="v3-download" href="downloads/MANUKURA_Y10_Practice_Pack_2026.pdf" download><span>PDF • 11 PAGES</span><strong>Two physical practice papers</strong><b>Download ↓</b></a>
-      </section>
     </div>`;
+
+  document.querySelectorAll('[data-v3-jump]').forEach(button=>button.addEventListener('click',()=>{
+    document.querySelector(`#${button.dataset.v3Jump}`)?.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
 
   const planItems = [
     ['Forces & motion','Force arrows, motion graphs and the four equations.'],
@@ -98,7 +97,7 @@
     ['Bones & movement','Long-bone structure, joints and antagonistic muscles.'],
     ['Breathing & exchange','Inhalation, diffusion and alveolus adaptations.'],
     ['Science skills','Variables, graphs, conclusions and improvements.'],
-    ['Timed paper','Complete one printed practice paper without notes.']
+    ['Mixed practice','Complete one 24-question session in Test mode without notes.']
   ];
   const planKey = 'y10-exam-plan-v3';
   let planState = JSON.parse(localStorage.getItem(planKey) || '[]');
@@ -149,6 +148,89 @@
     {q:'Why wear goggles when testing household solutions?',o:['Improve colour','Protect eyes from splashes','Increase pH','Make repeats identical'],a:1,e:'A safety answer links the hazard to protection.'}
   ];
 
+  const extraForces=[
+    mcq('25 N left and 25 N right gives a net force of…',['0 N','25 N left','25 N right','50 N'],0,'Equal opposite forces are balanced, so the net force is 0 N.'),
+    mcq('The unit used for force is…',['joule','newton','metre per second','kilogram'],1,'Force is measured in newtons (N).'),
+    mcq('On a free-body diagram, weight points…',['upward','downward','in the direction of motion','toward the largest arrow'],1,'Weight is the gravitational force and acts downward.'),
+    mcq('A table supporting a book exerts a force…',['upward on the book','downward on the book','only sideways','only if the book moves'],0,'The normal/support force acts upward on the book.'),
+    mcq('A steeper distance–time graph represents…',['a slower speed','a faster speed','zero distance','less mass'],1,'Distance–time gradient represents speed; steeper means faster.'),
+    mcq('A line returning toward zero distance shows an object…',['moving back toward the start','speeding up in one direction','remaining stationary','gaining mass'],0,'A decreasing distance from the start means the object is returning.'),
+    mcq('A horizontal line above zero on a speed–time graph means…',['stationary','constant speed','constant acceleration','returning to the start'],1,'The speed is unchanged, so it is moving at constant speed.'),
+    mcq('A downward slope on a speed–time graph means…',['acceleration in the positive direction','deceleration','constant speed','zero time'],1,'Speed is decreasing with time.'),
+    mcq('An object travels at 12 m/s for 3 s. Distance travelled?',['4 m','15 m','36 m','48 m'],2,'distance = speed × time = 12 × 3 = 36 m.'),
+    mcq('A runner covers 60 m at 5 m/s. Time taken?',['12 s','55 s','65 s','300 s'],0,'time = distance ÷ speed = 60 ÷ 5 = 12 s.'),
+    mcq('Velocity changes from 10 m/s to 22 m/s in 4 s. Acceleration?',['3 m/s²','8 m/s²','12 m/s²','32 m/s²'],0,'a = (22−10) ÷ 4 = 3 m/s².'),
+    mcq('A 5 kg object has a net force of 8 N. Its acceleration is…',['0.625 m/s²','1.6 m/s²','13 m/s²','40 m/s²'],1,'a = F ÷ m = 8 ÷ 5 = 1.6 m/s².'),
+    mcq('20 J of work moves an object 4 m. The force is…',['5 N','16 N','24 N','80 N'],0,'F = W ÷ d = 20 ÷ 4 = 5 N.')
+  ];
+  const extraChemistry=[
+    mcq('An element contains…',['one type of atom','two substances mixed','only molecules','a fixed pH'],0,'An element is made from one type of atom.'),
+    mcq('Air is best classified as a…',['single element','compound','mixture','pure metal'],2,'Air contains several gases that are not chemically bonded together.'),
+    mcq('A compound contains elements that are…',['chemically bonded in a fixed ratio','mixed in any ratio','always metals','separated by filtration'],0,'Compounds contain different elements chemically bonded in fixed proportions.'),
+    mcq('The charge of a proton is…',['−1','0','+1','+2'],2,'A proton has a +1 charge.'),
+    mcq('The charge of a neutron is…',['−1','0','+1','variable'],1,'A neutron has no electrical charge.'),
+    mcq('Which particles are found in the nucleus?',['electrons only','protons and neutrons','protons and electrons','neutrons and shells'],1,'The nucleus contains protons and neutrons.'),
+    mcq('A neutral sodium atom has electron arrangement…',['2,8,1','2,7,2','8,2,1','2,8,8'],0,'Sodium has 11 electrons arranged 2,8,1.'),
+    mcq('Atomic number 8 identifies…',['carbon','nitrogen','oxygen','neon'],2,'Oxygen has 8 protons, so its atomic number is 8.'),
+    mcq('A horizontal row in the periodic table is a…',['group','period','shell','mixture'],1,'Horizontal rows are periods.'),
+    mcq('A solution with pH 7 is…',['strongly acidic','neutral','alkaline','a metal'],1,'pH 7 is neutral.'),
+    mcq('A solution with pH 11 is…',['acidic','neutral','alkaline','always colourless'],2,'Values above pH 7 are alkaline.'),
+    mcq('To recover dissolved salt while losing the water, use…',['filtration','evaporation','magnetism','chromatography'],1,'Evaporation removes the solvent and leaves the dissolved solid.'),
+    mcq('Chromatography is useful for separating…',['coloured substances in ink','iron from sand','an insoluble solid from water','protons from atoms'],0,'Different dissolved colours travel at different rates through the paper.')
+  ];
+  const extraBody=[
+    mcq('The muscle type attached to bones is…',['cardiac','smooth','skeletal','involuntary only'],2,'Skeletal muscles pull on bones to create movement.'),
+    mcq('Smooth muscle is found mainly in…',['the heart only','walls of internal organs','tendons','bone marrow'],1,'Smooth muscle occurs in structures such as the gut and blood vessels.'),
+    mcq('A tendon connects…',['bone to bone','muscle to bone','muscle to muscle','cartilage to blood'],1,'Tendons transfer the pull of a muscle to a bone.'),
+    mcq('The tough outer membrane of a long bone is the…',['marrow','periosteum','cartilage','alveolus'],1,'The periosteum covers the outside of bone and supports repair and blood supply.'),
+    mcq('Compact bone mainly provides…',['dense strength','gas exchange','joint lubrication','muscle contraction'],0,'Compact bone is dense and gives strength.'),
+    mcq('Spongy bone is best described as…',['a light internal lattice','the smooth joint covering','a muscle attachment','the lung lining'],0,'Spongy bone has a strong, lightweight lattice structure.'),
+    mcq('During elbow flexion, the biceps…',['contracts','relaxes','becomes a ligament','pushes the bone'],0,'The biceps contracts and shortens during flexion.'),
+    mcq('During elbow flexion, the triceps…',['contracts','relaxes','becomes cartilage','produces blood cells'],1,'The triceps relaxes while the biceps contracts.'),
+    mcq('Ligaments help a joint by…',['connecting bone to bone','connecting muscle to bone','making red blood cells','moving oxygen'],0,'Ligaments connect bones and help stabilise joints.'),
+    mcq('During inhalation, pressure inside the chest…',['increases above outside pressure','decreases so air moves in','stays identical at all times','forces carbon dioxide into blood'],1,'Increased chest volume lowers pressure, so air moves into the lungs.'),
+    mcq('During exhalation, the diaphragm usually…',['contracts and flattens','relaxes and domes upward','moves oxygen into blood','stays permanently flat'],1,'The diaphragm relaxes and returns to a dome shape.'),
+    mcq('A large alveolar surface area allows…',['more diffusion at once','less blood flow','thicker walls','air to become solid'],0,'A larger surface provides more space for gas exchange.'),
+    mcq('A rich capillary supply around alveoli helps by…',['maintaining concentration gradients','stopping diffusion','drying the surface','reducing surface area'],0,'Blood flow carries gases away and toward the alveoli, maintaining diffusion gradients.')
+  ];
+  const extraSkills=[
+    {q:'A student changes ramp height and measures travel time. What is the independent variable?',o:['Travel time','Ramp height','Trolley mass recorded afterward','The conclusion'],a:1,e:'The independent variable is the factor deliberately changed.'},
+    {q:'In the ramp investigation, what is the dependent variable?',o:['Ramp height','Travel time','Ramp material kept the same','Release point'],a:1,e:'The dependent variable is the measured outcome.'},
+    {q:'Which is a suitable control variable in a ramp test?',o:['Use the same trolley','Change the trolley each trial','Change height and surface together','Measure no time'],a:0,e:'Keeping the trolley the same helps make it a fair test.'},
+    {q:'Why calculate a mean from repeated measurements?',o:['To reduce the effect of random variation','To change the independent variable','To remove every error','To avoid recording units'],a:0,e:'A mean from repeats gives a more reliable estimate.'},
+    {q:'A result far away from the others is called…',o:['a control','an anomaly','a unit','a hypothesis'],a:1,e:'An anomalous result does not fit the overall pattern.'},
+    {q:'The dependent variable normally belongs on the…',o:['x-axis','y-axis','graph title only','equipment list'],a:1,e:'The measured dependent variable is plotted on the y-axis.'},
+    {q:'What must appear beside numerical column headings?',o:['A prediction','Units','A risk only','The student name'],a:1,e:'Units make measurements interpretable.'},
+    {q:'Which graph is usually best for continuous numerical data?',o:['Line or scatter graph','Pictogram only','Unlabelled pie chart','No graph'],a:0,e:'Continuous variables are usually displayed on axes with plotted points.'},
+    {q:'Which graph is usually best for separate categories?',o:['Bar graph','Continuous line with no gaps','Distance–time graph only','No table'],a:0,e:'Bars suit distinct categories.'},
+    {q:'A strong graph title should identify…',o:['the relationship being investigated','only the student name','the expected answer','the safety equipment'],a:0,e:'The title should state what the graph shows.'},
+    {q:'A conclusion should be based mainly on…',o:['the collected evidence','what the student hoped for','one preferred result','a different experiment'],a:0,e:'Scientific conclusions must match the results.'},
+    {q:'Which evaluation is most useful?',o:['Timing by hand may add reaction-time error; use light gates','The experiment was bad','Do it better','Change every variable'],a:0,e:'A useful evaluation links a specific limitation to a matching improvement.'},
+    {q:'Which tool would improve accuracy when measuring 8.4 mL?',o:['A measuring cylinder with fine divisions','An unmarked cup','A dinner plate','A stopwatch'],a:0,e:'Fine scale divisions allow a more precise volume reading.'},
+    {q:'A hazard is…',o:['something with the potential to cause harm','the chance of a correct answer','the final graph','a controlled variable'],a:0,e:'A hazard is a source of possible harm.'},
+    {q:'A risk describes…',o:['the chance and seriousness of harm','the independent variable','the mean result','the equipment brand'],a:0,e:'Risk considers how likely harm is and how serious it could be.'},
+    {q:'Which is a testable hypothesis?',o:['Increasing ramp height will decrease travel time','Science is interesting','The trolley is nice','Results are results'],a:0,e:'A testable hypothesis predicts a relationship between measurable variables.'},
+    {q:'Why keep the release method the same in every ramp trial?',o:['To control an extra variable','To change acceleration randomly','To avoid repeats','To create an anomaly'],a:0,e:'A consistent release makes comparisons between ramp heights fair.'}
+  ];
+
+  const examBank={
+    forces:[...revision.forces.quiz,...extraForces],
+    chemistry:[...revision.chemistry.quiz,...extraChemistry],
+    body:[...revision.body.quiz,...extraBody],
+    skills:[...skills,...extraSkills]
+  };
+  const bankKey='y10-exam-bank-history-v4';
+  function drawQuestions(pool,count,unit){
+    const history=JSON.parse(localStorage.getItem(bankKey)||'{}');
+    let used=Array.isArray(history[unit])?history[unit]:[];
+    let available=pool.filter(item=>!used.includes(item.q));
+    if(available.length<count){used=[];available=[...pool]}
+    const selected=mix(available).slice(0,count);
+    history[unit]=[...used,...selected.map(item=>item.q)];
+    localStorage.setItem(bankKey,JSON.stringify(history));
+    return selected;
+  }
+
   let mode='practice',items=[],index=0,score=0,answers=[];
   const bestKey='y10-full-exam-practice-v3';
   function renderBest(){const best=JSON.parse(localStorage.getItem(bestKey)||'null');document.querySelector('#v3-best').textContent=best?`Your best: ${best.score}/24 (${best.percent}%)`:'No attempt saved yet.'}
@@ -156,10 +238,10 @@
   document.querySelector('#v3-start-test').onclick=startTest;
   function startTest(){
     items=[
-      ...mix(revision.forces.quiz).slice(0,6).map(x=>({...x,unit:'Forces & Motion'})),
-      ...mix(revision.chemistry.quiz).slice(0,6).map(x=>({...x,unit:'Chemistry'})),
-      ...mix(revision.body.quiz).slice(0,6).map(x=>({...x,unit:'Body Systems'})),
-      ...mix(skills).slice(0,6).map(x=>({...x,unit:'Science Skills'}))
+      ...drawQuestions(examBank.forces,6,'forces').map(x=>({...x,unit:'Forces & Motion'})),
+      ...drawQuestions(examBank.chemistry,6,'chemistry').map(x=>({...x,unit:'Chemistry'})),
+      ...drawQuestions(examBank.body,6,'body').map(x=>({...x,unit:'Body Systems'})),
+      ...drawQuestions(examBank.skills,6,'skills').map(x=>({...x,unit:'Science Skills'}))
     ];index=0;score=0;answers=[];renderQuestion();
   }
   function renderQuestion(){
@@ -178,7 +260,7 @@
   }
   function renderWritten(i,ratings){
     const stage=document.querySelector('#v3-test-stage');
-    if(i>=writtenPractice.length){const secure=ratings.filter(x=>x==='secure').length;stage.innerHTML=`<div class="v3-finish"><p class="eyebrow dark">PATHWAY COMPLETE</p><strong>${secure}/6</strong><h3>written responses self-rated secure</h3><p>Rework any “nearly” or “not yet” answer, then use the physical papers in Step 4.</p><a class="primary-button" href="#v3-print">Go to physical papers</a></div>`;return}
+    if(i>=writtenPractice.length){const secure=ratings.filter(x=>x==='secure').length;stage.innerHTML=`<div class="v3-finish"><p class="eyebrow dark">PATHWAY COMPLETE</p><strong>${secure}/6</strong><h3>written responses self-rated secure</h3><p>Rework any “nearly” or “not yet” response, then return for a fresh 24-question set. The bank holds back recently used questions.</p><button class="primary-button" id="v3-finish-retry" type="button">Start a fresh set</button></div>`;document.querySelector('#v3-finish-retry').onclick=startTest;return}
     const item=writtenPractice[i];stage.innerHTML=`<div class="v3-written"><div class="v3-running-head"><span>${item.unit}</span><strong>Written response ${i+1} of 6</strong></div><div class="v3-progress"><i style="width:${i/6*100}%"></i></div><h3>${item.q}</h3><label>Write before revealing the model<textarea rows="7" placeholder="Use complete sentences and scientific vocabulary."></textarea></label><button class="primary-button" id="v3-show-model">Reveal model answer</button><div class="v3-model" id="v3-model" hidden><span>MODEL ANSWER</span><p>${item.a}</p><strong>How close was your response?</strong><div><button data-v3-rating="not-yet">Not yet</button><button data-v3-rating="nearly">Nearly</button><button data-v3-rating="secure">Secure</button></div></div></div>`;
     document.querySelector('#v3-show-model').onclick=e=>{document.querySelector('#v3-model').hidden=false;e.currentTarget.hidden=true};document.querySelector('#v3-model').onclick=e=>{if(!e.target.dataset.v3Rating)return;renderWritten(i+1,[...ratings,e.target.dataset.v3Rating])};document.querySelector('#v3-practice').scrollIntoView({behavior:'smooth',block:'start'});
   }
