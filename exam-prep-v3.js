@@ -68,7 +68,7 @@
           <span class="v3-step-no">03</span>
           <p class="eyebrow dark">THE MAIN PRACTICE</p>
           <h2>24 marked questions.<br>Then six written responses.</h2>
-          <p>Six questions come from each 25-question learning-area pool. Questions are held back between attempts so students see the full bank before it resets.</p>
+          <p>Each set has six questions from every learning area. Read one question at a time and choose the best answer. Questions are held back between attempts so you practise the whole bank before it resets.</p>
           <div class="v3-test-spec"><span><b>6</b> Forces</span><span><b>6</b> Chemistry</span><span><b>6</b> Body</span><span><b>6</b> Skills</span></div>
         </div>
         <div class="v3-test-stage" id="v3-test-stage">
