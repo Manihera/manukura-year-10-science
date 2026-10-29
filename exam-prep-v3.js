@@ -93,7 +93,7 @@
   const planItems = [
     ['Forces & motion','Force arrows, motion graphs and the four equations.'],
     ['Atoms & particles','Particle models, atomic structure and electron shells.'],
-    ['Chemistry in action','pH, reactions and separation methods.'],
+    ['Chemistry in action','pH, the hydrogen test, filtration and distillation.'],
     ['Bones & movement','Long-bone structure, joints and antagonistic muscles.'],
     ['Breathing & exchange','Inhalation, diffusion and alveolus adaptations.'],
     ['Science skills','Variables, graphs, conclusions and improvements.'],
@@ -213,13 +213,52 @@
     {q:'Why keep the release method the same in every ramp trial?',o:['To control an extra variable','To change acceleration randomly','To avoid repeats','To create an anomaly'],a:0,e:'A consistent release makes comparisons between ramp heights fair.'}
   ];
 
+  const alignedForces=[
+    mcq('A distance-time graph is flat from 8 s to 12 s. The object is…',['moving at constant speed','stationary','accelerating','returning'],1,'A flat distance-time line means the distance does not change.'),
+    mcq('A distance-time line slopes downward toward zero. The object is…',['moving back toward its start','stationary','gaining mass','moving farther away'],0,'Its distance from the start is decreasing.'),
+    mcq('A 9 N force moves a box 7 m. The work done is…',['16 J','63 J','1.3 J','72 J'],1,'work = force × distance = 9 × 7 = 63 J.'),
+    mcq('A 96 N push east and 41 N friction west produce…',['55 N east','55 N west','137 N east','0 N'],0,'Opposite forces subtract: 96 − 41 = 55 N east.')
+  ];
+  const alignedChemistry=[
+    mcq('A gas gives a squeaky pop with a lit splint. It is…',['oxygen','carbon dioxide','hydrogen','nitrogen'],2,'Hydrogen gives a squeaky pop with a lit splint.'),
+    mcq('To obtain pure water from salt solution, use…',['filtration','distillation','a magnet','sieving'],1,'Water is boiled and condensed while salt remains behind.'),
+    mcq('A calcium atom has electron arrangement 2,8,8,2. It normally forms…',['Ca²⁺','Ca²⁻','Ca⁺','Ca⁴⁺'],0,'Calcium loses two outer electrons to form Ca²⁺.'),
+    mcq('Group 18 elements are very unreactive because they have…',['a full outer electron shell','no protons','only one shell','a pH of 18'],0,'A full outer shell makes Group 18 elements stable.')
+  ];
+  const alignedBody=[
+    mcq('Articular cartilage at the end of a bone mainly…',['reduces friction and absorbs shock','connects muscle to bone','produces movement','carries air'],0,'Cartilage gives a smooth, cushioning joint surface.'),
+    mcq('During knee flexion, the hamstrings…',['contract while the quadriceps relax','relax while the quadriceps contract','both become ligaments','do not change'],0,'The hamstrings contract to bend the knee while the quadriceps relax.'),
+    mcq('During inhalation, lower pressure inside the chest causes air to…',['move into the lungs','move out of the lungs','enter the blood directly','stop moving'],0,'Air moves from higher outside pressure to lower pressure in the lungs.')
+  ];
+  const alignedSkills=[
+    {q:'Three acceleration trials are 2.1, 2.4 and 2.1 m/s². What is the mean?',o:['2.0 m/s²','2.2 m/s²','2.4 m/s²','6.6 m/s²'],a:1,e:'(2.1 + 2.4 + 2.1) ÷ 3 = 2.2 m/s².'},
+    {q:'A student changes added mass on the same trolley. Which pair should be controlled?',o:['Ramp angle and release point','Added mass and acceleration','Mean and conclusion','Both graph axes'],a:0,e:'Ramp angle and release point must stay the same for a fair comparison.'},
+    {q:'Mass increases while acceleration falls. Which conclusion is supported?',o:['Increasing mass decreased acceleration in this investigation','Mass never affects motion','Acceleration caused mass','The results prove every trolley behaves identically'],a:0,e:'A sound conclusion stays within the relationship shown by the data.'},
+    {q:'Which change most directly improves the reliability of a mean?',o:['Complete more trials at each mass','Remove the units','Use one result only','Change the ramp each time'],a:0,e:'More repeated trials reduce the influence of random variation.'}
+  ];
+
+  const omit=(pool,questions)=>pool.filter(item=>!questions.includes(item.q));
+
   const examBank={
-    forces:[...revision.forces.quiz,...extraForces],
-    chemistry:[...revision.chemistry.quiz,...extraChemistry],
-    body:[...revision.body.quiz,...extraBody],
-    skills:[...skills,...extraSkills]
+    forces:[...omit([...revision.forces.quiz,...extraForces],[
+      'Speed–time gradient gives…','If net force is zero, a moving object can…',
+      'A horizontal line above zero on a speed–time graph means…','A downward slope on a speed–time graph means…'
+    ]),...alignedForces],
+    chemistry:[...omit([...revision.chemistry.quiz,...extraChemistry],[
+      'Sherbet fizz gas?','Chromatography baseline should use…',
+      'To recover dissolved salt while losing the water, use…','Chromatography is useful for separating…'
+    ]),...alignedChemistry],
+    body:[...omit([...revision.body.quiz,...extraBody],[
+      'Blood cells are produced in…','Shoulder joint type?','During exhalation, the diaphragm usually…'
+    ]),...alignedBody],
+    skills:[...omit([...skills,...extraSkills],[
+      'Which tool would improve accuracy when measuring 8.4 mL?','A hazard is…','A risk describes…','Which is a testable hypothesis?'
+    ]),...alignedSkills]
   };
-  const bankKey='y10-exam-bank-history-v4';
+  Object.entries(examBank).forEach(([unit,pool])=>{
+    if(pool.length!==25) throw new Error(`${unit} exam bank must contain 25 questions; found ${pool.length}`);
+  });
+  const bankKey='y10-exam-bank-history-v5';
   function drawQuestions(pool,count,unit){
     const history=JSON.parse(localStorage.getItem(bankKey)||'{}');
     let used=Array.isArray(history[unit])?history[unit]:[];
