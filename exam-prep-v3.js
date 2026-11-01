@@ -93,7 +93,7 @@
   const planItems = [
     ['Forces & motion','Force arrows, motion graphs and the four equations.'],
     ['Atoms & particles','Particle models, atomic structure and electron shells.'],
-    ['Chemistry in action','pH, the hydrogen test, filtration and distillation.'],
+    ['Chemistry in action','pH, the hydrogen test, filtration, evaporation and magnetism.'],
     ['Bones & movement','Long-bone structure, joints and antagonistic muscles.'],
     ['Breathing & exchange','Inhalation, diffusion and alveolus adaptations.'],
     ['Science skills','Variables, graphs, conclusions and improvements.'],
@@ -175,8 +175,8 @@
     mcq('A horizontal row in the periodic table is a…',['group','period','shell','mixture'],1,'Horizontal rows are periods.'),
     mcq('A solution with pH 7 is…',['strongly acidic','neutral','alkaline','a metal'],1,'pH 7 is neutral.'),
     mcq('A solution with pH 11 is…',['acidic','neutral','alkaline','always colourless'],2,'Values above pH 7 are alkaline.'),
-    mcq('To recover dissolved salt while losing the water, use…',['filtration','evaporation','magnetism','chromatography'],1,'Evaporation removes the solvent and leaves the dissolved solid.'),
-    mcq('Chromatography is useful for separating…',['coloured substances in ink','iron from sand','an insoluble solid from water','protons from atoms'],0,'Different dissolved colours travel at different rates through the paper.')
+    mcq('To recover dissolved salt while losing the water, use…',['filtration','evaporation','magnetism','sieving'],1,'Evaporation removes the water and leaves the dissolved solid.'),
+    mcq('Which method separates iron filings from sand?',['evaporation','filtration','magnetic separation','pH testing'],2,'A magnet attracts the iron but not the sand.')
   ];
   const extraBody=[
     mcq('The muscle type attached to bones is…',['cardiac','smooth','skeletal','involuntary only'],2,'Skeletal muscles pull on bones to create movement.'),
@@ -221,7 +221,7 @@
   ];
   const alignedChemistry=[
     mcq('A gas gives a squeaky pop with a lit splint. It is…',['oxygen','carbon dioxide','hydrogen','nitrogen'],2,'Hydrogen gives a squeaky pop with a lit splint.'),
-    mcq('To obtain pure water from salt solution, use…',['filtration','distillation','a magnet','sieving'],1,'Water is boiled and condensed while salt remains behind.'),
+    mcq('Why can filtration not remove dissolved salt from water?',['The dissolved salt passes through the filter paper with the water','Salt is magnetic','Water is a solid','Filter paper changes the pH'],0,'Dissolved salt particles pass through the filter paper with the water.'),
     mcq('A calcium atom has electron arrangement 2,8,8,2. It normally forms…',['Ca²⁺','Ca²⁻','Ca⁺','Ca⁴⁺'],0,'Calcium loses two outer electrons to form Ca²⁺.'),
     mcq('Group 18 elements are very unreactive because they have…',['a full outer electron shell','no protons','only one shell','a pH of 18'],0,'A full outer shell makes Group 18 elements stable.')
   ];
@@ -245,8 +245,8 @@
       'A horizontal line above zero on a speed–time graph means…','A downward slope on a speed–time graph means…'
     ]),...alignedForces],
     chemistry:[...omit([...revision.chemistry.quiz,...extraChemistry],[
-      'Sherbet fizz gas?','Chromatography baseline should use…',
-      'To recover dissolved salt while losing the water, use…','Chromatography is useful for separating…'
+      'Sherbet fizz gas?','Recover salt from salt water using…',
+      'To recover dissolved salt while losing the water, use…','Which method separates iron filings from sand?'
     ]),...alignedChemistry],
     body:[...omit([...revision.body.quiz,...extraBody],[
       'Blood cells are produced in…','Shoulder joint type?','During exhalation, the diaphragm usually…'
@@ -258,7 +258,7 @@
   Object.entries(examBank).forEach(([unit,pool])=>{
     if(pool.length!==25) throw new Error(`${unit} exam bank must contain 25 questions; found ${pool.length}`);
   });
-  const bankKey='y10-exam-bank-history-v5';
+  const bankKey='y10-exam-bank-history-v6';
   function drawQuestions(pool,count,unit){
     const history=JSON.parse(localStorage.getItem(bankKey)||'{}');
     let used=Array.isArray(history[unit])?history[unit]:[];
@@ -305,3 +305,4 @@
   }
   renderBest();
 })();
+
