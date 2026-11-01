@@ -176,7 +176,7 @@
     mcq('A solution with pH 7 is…',['strongly acidic','neutral','alkaline','a metal'],1,'pH 7 is neutral.'),
     mcq('A solution with pH 11 is…',['acidic','neutral','alkaline','always colourless'],2,'Values above pH 7 are alkaline.'),
     mcq('To recover dissolved salt while losing the water, use…',['filtration','evaporation','magnetism','sieving'],1,'Evaporation removes the water and leaves the dissolved solid.'),
-    mcq('Which method separates iron filings from sand?',['evaporation','filtration','magnetic separation','pH testing'],2,'A magnet attracts the iron but not the sand.')
+    mcq('A mixture contains iron filings and sand. What is the best separation method?',['evaporation','filtration','magnetic separation','pH testing'],2,'A magnet attracts the iron but not the sand.')
   ];
   const extraBody=[
     mcq('The muscle type attached to bones is…',['cardiac','smooth','skeletal','involuntary only'],2,'Skeletal muscles pull on bones to create movement.'),
