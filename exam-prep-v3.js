@@ -7,7 +7,7 @@
       <div class="exam-v3-copy">
         <p class="eyebrow">WHAKARITE • END-OF-YEAR</p>
         <h1>Build confidence.<br><span>Then prove it.</span></h1>
-        <p>A guided preparation pathway across Forces &amp; Motion, Chemistry, Body Systems and Science Skills. The secure examination is not published here.</p>
+        <p>A guided preparation pathway across Forces &amp; Motion, Chemistry, Body Systems and Science in Practice. The secure examination is not published here.</p>
         <button class="primary-button" type="button" data-v3-jump="v3-plan">Begin the pathway</button>
       </div>
       <div class="exam-v3-stats" aria-label="Practice structure">
@@ -39,7 +39,7 @@
       <section class="v3-step v3-sharpen" id="v3-sharpen">
         <header class="v3-section-head">
           <span class="v3-step-no">02</span>
-          <div><p class="eyebrow">SHARPEN THE SKILLS</p><h2>Fix a gap before the full practice</h2><p>Use this for a short warm-up. Step 3 is the substantial mixed test.</p></div>
+          <div><p class="eyebrow">BUILD YOUR CONFIDENCE</p><h2>Use the words, pictures and formulas</h2><p>Start with the support. Then try the full practice without notes.</p></div>
         </header>
         <div class="v3-tool-grid">
           <article class="v3-calc">
@@ -51,15 +51,20 @@
             <p class="v3-feedback" id="v3-calc-feedback" aria-live="polite"></p>
           </article>
           <article class="v3-command">
-            <div class="v3-tool-title"><span>MARK-MAKING</span><h3>What command words need</h3></div>
+            <div class="v3-tool-title"><span>WORD HELP</span><h3>What the question is asking</h3></div>
             <div class="v3-command-list">
               <button data-v3-command="describe"><b>Describe</b><span>State the pattern or observation.</span></button>
               <button data-v3-command="explain"><b>Explain</b><span>Give the science reason and connect it.</span></button>
               <button data-v3-command="calculate"><b>Calculate</b><span>Equation, substitution, answer, unit.</span></button>
-              <button data-v3-command="evaluate"><b>Evaluate</b><span>Name a limitation and specific improvement.</span></button>
+              <button data-v3-command="evaluate"><b>Improve</b><span>Say what to change and how it helps.</span></button>
             </div>
             <div class="v3-command-example" id="v3-command-example"><strong>Tap a command word</strong><p>See what a strong response must contain.</p></div>
           </article>
+        </div>
+        <div class="v3-visual-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px">
+          <article style="background:#fff;border-radius:18px;padding:18px"><strong><u>Net force</u></strong><svg viewBox="0 0 280 110" role="img" aria-label="Opposite force arrows on a box" style="display:block;width:100%;height:auto;margin-top:8px"><defs><marker id="v3arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#d82432"/></marker></defs><rect x="108" y="34" width="64" height="44" rx="8" fill="#153a4a"/><line x1="106" y1="56" x2="28" y2="56" stroke="#d82432" stroke-width="6" marker-end="url(#v3arrow)"/><line x1="174" y1="56" x2="256" y2="56" stroke="#d82432" stroke-width="9" marker-end="url(#v3arrow)"/><text x="30" y="30" font-size="15">40 N</text><text x="218" y="30" font-size="15">70 N</text></svg><p><b>Opposite directions?</b> Subtract. The answer points toward the bigger force.</p></article>
+          <article style="background:#fff;border-radius:18px;padding:18px"><strong><u>pH reminder</u></strong><div aria-label="pH scale from acid to alkali" style="height:28px;border-radius:8px;margin:18px 0 6px;background:linear-gradient(90deg,#d82432,#ff8b32,#ffd84d,#48a85b,#38a8c9,#465ac5,#7b3c91)"></div><div style="display:flex;justify-content:space-between;font-weight:800"><span>0<br><em>acid</em></span><span style="text-align:center">7<br><em>neutral</em></span><span style="text-align:right">14<br><em>alkali</em></span></div></article>
+          <article style="background:#fff;border-radius:18px;padding:18px"><strong><u>Breathing pathway</u></strong><p style="font-size:1.05rem;line-height:1.8"><b>Exercise</b> → muscles need more <b><i>oxygen</i></b> → <b><i>breathing rate</i></b> rises → during recovery it falls toward resting rate.</p><p>In graphs, quote <b>two values</b> when you describe the change.</p></article>
         </div>
       </section>
 
@@ -69,7 +74,7 @@
           <p class="eyebrow dark">THE MAIN PRACTICE</p>
           <h2>24 marked questions.<br>Then six written responses.</h2>
           <p>Each set has six questions from every learning area. Read one question at a time and choose the best answer. Questions are held back between attempts so you practise the whole bank before it resets.</p>
-          <div class="v3-test-spec"><span><b>6</b> Forces</span><span><b>6</b> Chemistry</span><span><b>6</b> Body</span><span><b>6</b> Skills</span></div>
+          <div class="v3-test-spec"><span><b>6</b> Forces</span><span><b>6</b> Chemistry</span><span><b>6</b> Body</span><span><b>6</b> Practice</span></div>
         </div>
         <div class="v3-test-stage" id="v3-test-stage">
           <div class="v3-launch">
@@ -96,7 +101,7 @@
     ['Chemistry in action','pH, the hydrogen test, filtration, evaporation and magnetism.'],
     ['Bones & movement','Long-bone structure, joints and antagonistic muscles.'],
     ['Breathing & exchange','Inhalation, diffusion and alveolus adaptations.'],
-    ['Science skills','Variables, graphs, conclusions and improvements.'],
+    ['Science in Practice','Read tables and graphs, use pH results, choose separation methods and explain recovery.'],
     ['Mixed practice','Complete one 24-question session in Test mode without notes.']
   ];
   const planKey = 'y10-exam-plan-v3';
@@ -114,6 +119,9 @@
 
   const whole=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
   const mix=a=>[...a].sort(()=>Math.random()-.5);
+  const formatPrompt=text=>text
+    .replace(/\b(calculate|state|explain|describe|name|write|choose|use|give|compare)\b/gi,'<strong><u>$1</u></strong>')
+    .replace(/\b(net force|average speed|acceleration|work done|universal indicator|breathing rate|oxygen|carbon dioxide|acid|neutral|alkali|filtration|evaporation|hydrogen|mean|reliable)\b/gi,'<strong><em>$1</em></strong>');
   const calc={mode:'speed',answer:0,unit:''};
   function makeCalc(){
     let q;
@@ -130,10 +138,10 @@
   makeCalc();
 
   const commandExamples={
-    describe:['Describe','“Breathing rate increased as exercise time increased.” State the visible pattern; do not explain why unless asked.'],
-    explain:['Explain','“Breathing rate increased because working muscles needed more oxygen for respiration.” Link the science cause to the observed effect.'],
-    calculate:['Calculate','Write the equation, substitute the values, solve, and finish with the correct unit.'],
-    evaluate:['Evaluate','Name the exact weakness, explain its effect, then give a matching improvement — for example, reaction-time error → use light gates.']
+    describe:['Describe','Say what happened. Use two numbers if a table or graph is given: “Breathing rate fell from 36 to 18 breaths per minute.”'],
+    explain:['Explain','Give the science reason: “Breathing stayed high because the body still needed oxygen for recovery.”'],
+    calculate:['Calculate','Write the formula, put in the numbers, solve it, and include the unit.'],
+    evaluate:['Improve','Say what to change and how it helps: “Repeat each test and calculate a mean so one unusual result has less effect.”']
   };
   document.querySelector('.v3-command-list').onclick=e=>{const button=e.target.closest('[data-v3-command]');if(!button)return;document.querySelectorAll('[data-v3-command]').forEach(b=>b.classList.toggle('active',b===button));const [title,text]=commandExamples[button.dataset.v3Command];document.querySelector('#v3-command-example').innerHTML=`<strong>${title}</strong><p>${text}</p>`};
 
@@ -237,6 +245,34 @@
     {q:'Which change most directly improves the reliability of a mean?',o:['Complete more trials at each mass','Remove the units','Use one result only','Change the ramp each time'],a:0,e:'More repeated trials reduce the influence of random variation.'}
   ];
 
+  const scienceInPractice=[
+    mcq('A trolley travels 2.0 m in 4.0 s. What is its average speed?',['0.5 m/s','2.0 m/s','6.0 m/s','8.0 m/s'],0,'speed = distance ÷ time = 2.0 ÷ 4.0 = 0.5 m/s.'),
+    mcq('Ramp height rises from 5 cm to 20 cm. Travel time falls from 5.2 s to 2.8 s. Which statement describes the pattern?',['Higher ramps gave shorter travel times','Higher ramps gave longer travel times','Travel time stayed the same','There is no pattern'],0,'Use both values: as ramp height increased, travel time decreased.'),
+    mcq('The times are 3.2 s, 3.4 s and 3.3 s. What is the mean?',['3.0 s','3.3 s','3.4 s','9.9 s'],1,'Add the three times and divide by 3: 9.9 ÷ 3 = 3.3 s.'),
+    mcq('A student times a trolley three times at each height. Why?',['To make the result more reliable','To change the height','To increase the distance','To remove the unit'],0,'Repeats let the student compare results and calculate a mean.'),
+    mcq('One trolley time is very different from the other repeats. What should the student do first?',['Check and repeat that trial','Hide the result','Change every variable','Use only that result'],0,'Check an unusual result and repeat the measurement before deciding what to do with it.'),
+    mcq('A sample has pH 3. It is…',['acid','neutral','alkali','a metal'],0,'A pH below 7 is acidic.'),
+    mcq('A sample has pH 7. It is…',['acid','neutral','alkali','magnetic'],1,'pH 7 is neutral.'),
+    mcq('A sample has pH 11. It is…',['acid','neutral','alkali','insoluble'],2,'A pH above 7 is alkaline.'),
+    mcq('Universal indicator is green. Which pH is the best match?',['2','5','7','13'],2,'Green universal indicator shows a neutral solution near pH 7.'),
+    mcq('Which method separates chalk powder from water?',['filtration','evaporation','magnetism','a pH test'],0,'Filter paper traps insoluble chalk while the water passes through.'),
+    mcq('Which method recovers salt from salt water?',['evaporation','filtration only','magnetism','a lit splint'],0,'Evaporation removes the water and leaves the dissolved salt.'),
+    mcq('Which method separates iron filings from sand?',['magnetic separation','filtration','evaporation','universal indicator'],0,'A magnet attracts iron but does not attract sand.'),
+    mcq('Why can filter paper not remove dissolved salt from water?',['The dissolved salt passes through with the water','Salt is a gas','The filter changes salt into water','Salt is magnetic'],0,'Dissolved salt particles are small enough to pass through the filter paper with the water.'),
+    mcq('A gas makes a squeaky pop with a lit splint. The gas is…',['hydrogen','oxygen','carbon dioxide','nitrogen'],0,'Hydrogen gives a squeaky pop with a lit splint.'),
+    mcq('Breathing rate is 38 breaths/min straight after exercise and 20 breaths/min after 4 minutes. What happened?',['It decreased by 18 breaths/min','It increased by 18 breaths/min','It stayed the same','It decreased by 58 breaths/min'],0,'38 − 20 = 18, so breathing rate decreased by 18 breaths per minute.'),
+    mcq('Why is breathing rate high straight after exercise?',['Muscles need more oxygen and make more carbon dioxide','Bones need to evaporate water','The lungs become solid','The pH scale gets longer'],0,'Working muscles need oxygen for respiration and carbon dioxide must be removed.'),
+    mcq('During recovery, breathing rate usually…',['falls toward the resting rate','keeps rising forever','becomes zero at once','changes into speed'],0,'As the body recovers, breathing rate moves back toward the resting value.'),
+    mcq('A graph shows breathing rate falling from 40 to 18 breaths/min. Which answer uses evidence?',['It fell from 40 to 18 breaths/min','It changed a bit','The graph looks good','Exercise is hard'],0,'A strong description states the change and quotes two values.'),
+    mcq('A pulling force stays the same. Trolley mass increases and acceleration decreases. Which statement matches the results?',['More mass gave less acceleration','More mass gave more acceleration','Mass had no effect','Acceleration caused mass'],0,'For the same force, increasing mass lowers acceleration.'),
+    mcq('Which answer best improves a hand-timed trolley test?',['Repeat each time and calculate a mean','Use a different trolley every time','Change the distance each time','Record no units'],0,'Repeats and a mean make the timing result more reliable.'),
+    mcq('A table heading says “Time”. What else should it show?',['The unit, such as s','The expected answer','A student name only','The conclusion'],0,'Every numerical heading needs its unit.'),
+    mcq('Which answer is a clear description?',['As ramp height increased, time decreased','The trolley sped up because gravity pulled it','The method was fair','I liked the result'],0,'Describe tells what happened. It does not need the science reason.'),
+    mcq('Which answer is a clear explanation?',['Breathing rose because working muscles needed more oxygen','Breathing rose from 15 to 35 breaths/min','The line went up','The result was 35'],0,'Explain gives the science reason and links it to the result.'),
+    mcq('Which calculation answer is complete?',['0.8 m/s with working shown','0.8','speedy','2.4 ÷ 3 with no answer'],0,'A complete calculation shows working, the answer and the correct unit.'),
+    mcq('A group tested each pH sample once. What is the best improvement?',['Repeat each test and compare the colours','Add more unknown liquids','Use a different indicator each time','Remove the pH scale'],0,'Repeating under the same conditions makes the classification more reliable.')
+  ];
+
   const omit=(pool,questions)=>pool.filter(item=>!questions.includes(item.q));
 
   const examBank={
@@ -251,14 +287,12 @@
     body:[...omit([...revision.body.quiz,...extraBody],[
       'Blood cells are produced in…','Shoulder joint type?','During exhalation, the diaphragm usually…'
     ]),...alignedBody],
-    skills:[...omit([...skills,...extraSkills],[
-      'Which tool would improve accuracy when measuring 8.4 mL?','A hazard is…','A risk describes…','Which is a testable hypothesis?'
-    ]),...alignedSkills]
+    skills:scienceInPractice
   };
   Object.entries(examBank).forEach(([unit,pool])=>{
     if(pool.length!==25) throw new Error(`${unit} exam bank must contain 25 questions; found ${pool.length}`);
   });
-  const bankKey='y10-exam-bank-history-v6';
+  const bankKey='y10-exam-bank-history-v7';
   function drawQuestions(pool,count,unit){
     const history=JSON.parse(localStorage.getItem(bankKey)||'{}');
     let used=Array.isArray(history[unit])?history[unit]:[];
@@ -280,27 +314,27 @@
       ...drawQuestions(examBank.forces,6,'forces').map(x=>({...x,unit:'Forces & Motion'})),
       ...drawQuestions(examBank.chemistry,6,'chemistry').map(x=>({...x,unit:'Chemistry'})),
       ...drawQuestions(examBank.body,6,'body').map(x=>({...x,unit:'Body Systems'})),
-      ...drawQuestions(examBank.skills,6,'skills').map(x=>({...x,unit:'Science Skills'}))
+      ...drawQuestions(examBank.skills,6,'skills').map(x=>({...x,unit:'Science in Practice'}))
     ];index=0;score=0;answers=[];renderQuestion();
   }
   function renderQuestion(){
     if(index>=items.length){renderResults();return}
     const item=items[index],stage=document.querySelector('#v3-test-stage');
-    stage.innerHTML=`<div class="v3-running"><div class="v3-running-head"><span>${item.unit}</span><strong>Question ${index+1} of 24</strong></div><div class="v3-progress"><i style="width:${index/24*100}%"></i></div><h3>${item.q}</h3><div class="v3-options">${item.o.map((x,i)=>`<button data-v3-answer="${i}"><b>${String.fromCharCode(65+i)}</b><span>${x}</span></button>`).join('')}</div><p class="v3-feedback" aria-live="polite"></p><button class="primary-button v3-next" hidden>${index===23?'Finish marked section':'Next question'}</button></div>`;
+    stage.innerHTML=`<div class="v3-running"><div class="v3-running-head"><span>${item.unit}</span><strong>Question ${index+1} of 24</strong></div><div class="v3-progress"><i style="width:${index/24*100}%"></i></div><h3>${formatPrompt(item.q)}</h3><div class="v3-options">${item.o.map((x,i)=>`<button data-v3-answer="${i}"><b>${String.fromCharCode(65+i)}</b><span>${x}</span></button>`).join('')}</div><p class="v3-feedback" aria-live="polite"></p><button class="primary-button v3-next" hidden>${index===23?'Finish marked section':'Next question'}</button></div>`;
     const opts=[...stage.querySelectorAll('[data-v3-answer]')],feed=stage.querySelector('.v3-feedback'),next=stage.querySelector('.v3-next');
     opts.forEach(b=>b.onclick=()=>{if(opts.some(x=>x.disabled))return;const chosen=+b.dataset.v3Answer,ok=chosen===item.a;opts.forEach((x,i)=>{x.disabled=true;if(mode==='practice'&&i===item.a)x.classList.add('correct-choice')});b.classList.add(ok?'selected-correct':'selected-wrong');if(ok)score++;answers.push({item,chosen,correct:ok});feed.textContent=mode==='practice'?(ok?'Correct. ':'Not yet. ')+item.e:'Answer recorded. Feedback will appear at the end.';feed.dataset.state=mode==='practice'?(ok?'correct':'retry'):'neutral';next.hidden=false});
     next.onclick=()=>{index++;renderQuestion()};document.querySelector('#v3-practice').scrollIntoView({behavior:'smooth',block:'start'});
   }
   function renderResults(){
     const pct=Math.round(score/24*100),old=JSON.parse(localStorage.getItem(bestKey)||'null');if(!old||score>old.score)localStorage.setItem(bestKey,JSON.stringify({score,percent:pct,date:new Date().toISOString()}));
-    const units=['Forces & Motion','Chemistry','Body Systems','Science Skills'];const breakdown=units.map(unit=>{const rows=answers.filter(x=>x.item.unit===unit);return{unit,score:rows.filter(x=>x.correct).length,total:rows.length}});const missed=answers.filter(x=>!x.correct);
+    const units=['Forces & Motion','Chemistry','Body Systems','Science in Practice'];const breakdown=units.map(unit=>{const rows=answers.filter(x=>x.item.unit===unit);return{unit,score:rows.filter(x=>x.correct).length,total:rows.length}});const missed=answers.filter(x=>!x.correct);
     document.querySelector('#v3-test-stage').innerHTML=`<div class="v3-results"><p class="eyebrow dark">MARKED SECTION COMPLETE</p><div class="v3-result-hero"><strong>${score}<span>/24</span></strong><div><h3>${pct>=84?'Strong and exam ready':pct>=67?'A solid base — now close the gaps':'Use the breakdown to target revision'}</h3><p>Your best attempt stays on this device.</p></div></div><div class="v3-breakdown">${breakdown.map(x=>`<div><strong>${x.score}/${x.total}</strong><span>${x.unit}</span></div>`).join('')}</div><details class="v3-review"><summary>Review ${missed.length} missed question${missed.length===1?'':'s'}</summary>${missed.length?missed.map(x=>`<article><b>${x.item.unit}</b><p>${x.item.q}</p><small>${x.item.e}</small></article>`).join(''):'<p>Nothing missed — excellent retrieval.</p>'}</details><div class="v3-written-launch"><div><p class="eyebrow dark">NEXT: SIX WRITTEN RESPONSES</p><h3>Turn knowledge into full-mark explanations</h3><p>Write first, reveal the model, then self-assess.</p></div><button class="primary-button" id="v3-start-written">Begin written section</button></div><button class="v3-ghost" id="v3-retry">Try a fresh 24-question set</button></div>`;
     document.querySelector('#v3-start-written').onclick=()=>renderWritten(0,[]);document.querySelector('#v3-retry').onclick=startTest;
   }
   function renderWritten(i,ratings){
     const stage=document.querySelector('#v3-test-stage');
     if(i>=writtenPractice.length){const secure=ratings.filter(x=>x==='secure').length;stage.innerHTML=`<div class="v3-finish"><p class="eyebrow dark">PATHWAY COMPLETE</p><strong>${secure}/6</strong><h3>written responses self-rated secure</h3><p>Rework any “nearly” or “not yet” response, then return for a fresh 24-question set. The bank holds back recently used questions.</p><button class="primary-button" id="v3-finish-retry" type="button">Start a fresh set</button></div>`;document.querySelector('#v3-finish-retry').onclick=startTest;return}
-    const item=writtenPractice[i];stage.innerHTML=`<div class="v3-written"><div class="v3-running-head"><span>${item.unit}</span><strong>Written response ${i+1} of 6</strong></div><div class="v3-progress"><i style="width:${i/6*100}%"></i></div><h3>${item.q}</h3><label>Write before revealing the model<textarea rows="7" placeholder="Use complete sentences and scientific vocabulary."></textarea></label><button class="primary-button" id="v3-show-model">Reveal model answer</button><div class="v3-model" id="v3-model" hidden><span>MODEL ANSWER</span><p>${item.a}</p><strong>How close was your response?</strong><div><button data-v3-rating="not-yet">Not yet</button><button data-v3-rating="nearly">Nearly</button><button data-v3-rating="secure">Secure</button></div></div></div>`;
+    const item=writtenPractice[i];stage.innerHTML=`<div class="v3-written"><div class="v3-running-head"><span>${item.unit}</span><strong>Written response ${i+1} of 6</strong></div><div class="v3-progress"><i style="width:${i/6*100}%"></i></div><h3>${formatPrompt(item.q)}</h3><label>Write before revealing the model<textarea rows="7" placeholder="Use the key words shown in the question. Short, clear sentences are okay."></textarea></label><button class="primary-button" id="v3-show-model">Reveal model answer</button><div class="v3-model" id="v3-model" hidden><span>MODEL ANSWER</span><p>${item.a}</p><strong>How close was your response?</strong><div><button data-v3-rating="not-yet">Not yet</button><button data-v3-rating="nearly">Nearly</button><button data-v3-rating="secure">Secure</button></div></div></div>`;
     document.querySelector('#v3-show-model').onclick=e=>{document.querySelector('#v3-model').hidden=false;e.currentTarget.hidden=true};document.querySelector('#v3-model').onclick=e=>{if(!e.target.dataset.v3Rating)return;renderWritten(i+1,[...ratings,e.target.dataset.v3Rating])};document.querySelector('#v3-practice').scrollIntoView({behavior:'smooth',block:'start'});
   }
   renderBest();
