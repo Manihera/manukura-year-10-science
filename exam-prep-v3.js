@@ -78,15 +78,16 @@
           <div class="v3-task-stage" id="v3-task-stage"></div>
         </section>
         <style>
-          .v3-task-lab{margin-top:20px;background:#fff;border-radius:18px;padding:clamp(16px,3vw,26px)}
+          .v3-task-lab{margin-top:20px;background:#fff;border-radius:18px;padding:clamp(16px,3vw,26px);color:#151515}
+          .v3-task-lab h3,.v3-task-lab h4,.v3-task-lab p,.v3-task-lab label,.v3-task-lab b{color:#151515!important}
           .v3-task-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
-          .v3-task-tabs button,.v3-task-stage button,.v3-task-stage select,.v3-task-stage input{min-height:46px;font:inherit;border:2px solid #d7d4cf;border-radius:12px;background:#fff;padding:10px 12px}
-          .v3-task-tabs button.active{border-color:#d82432;background:#fff0f1;font-weight:800}
+          .v3-task-tabs button,.v3-task-stage button,.v3-task-stage select,.v3-task-stage input{min-height:46px;font:inherit;border:2px solid #d7d4cf;border-radius:12px;background:#fff;padding:10px 12px;color:#151515!important}
+          .v3-task-tabs button.active{border-color:#d82432;background:#fff0f1;font-weight:800;color:#151515!important}
           .v3-task-stage{border:2px solid #ebe8e3;border-radius:16px;padding:16px;background:#faf9f7}
           .v3-task-stage h4{font-size:1.2rem;margin:0 0 8px}.v3-task-stage p{line-height:1.55}
           .v3-task-rows{display:grid;gap:10px;margin:14px 0}.v3-task-row{display:grid;grid-template-columns:minmax(110px,1fr) minmax(170px,2fr);gap:10px;align-items:center}
           .v3-task-row select,.v3-task-row input{width:100%}.v3-task-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-          .v3-task-feedback{font-weight:750;margin:12px 0 0}.v3-task-feedback[data-state="correct"]{color:#147344}.v3-task-feedback[data-state="retry"]{color:#a3202a}
+          .v3-task-feedback{font-weight:750;margin:12px 0 0}.v3-task-feedback[data-state="correct"]{color:#147344!important}.v3-task-feedback[data-state="retry"]{color:#a3202a!important}
           @media(max-width:560px){.v3-task-row{grid-template-columns:1fr}.v3-task-tabs button{flex:1 1 44%}}
         </style>
       </section>
