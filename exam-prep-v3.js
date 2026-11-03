@@ -78,6 +78,8 @@
           <div class="v3-task-stage" id="v3-task-stage"></div>
         </section>
         <style>
+          .v3-visual-grid article{color:#151515!important}
+          .v3-visual-grid article strong,.v3-visual-grid article p,.v3-visual-grid article b,.v3-visual-grid article span,.v3-visual-grid article em{color:#151515!important}
           .v3-task-lab{margin-top:20px;background:#fff;border-radius:18px;padding:clamp(16px,3vw,26px);color:#151515}
           .v3-task-lab h3,.v3-task-lab h4,.v3-task-lab p,.v3-task-lab label,.v3-task-lab b{color:#151515!important}
           .v3-task-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
