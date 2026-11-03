@@ -7,7 +7,7 @@
       <div class="exam-v3-copy">
         <p class="eyebrow">WHAKARITE • END-OF-YEAR</p>
         <h1>Build confidence.<br><span>Then prove it.</span></h1>
-        <p>A guided preparation pathway across Forces &amp; Motion, Chemistry, Body Systems and Science in Practice. The secure examination is not published here.</p>
+        <p>A guided preparation pathway across Forces &amp; Motion, Chemistry, Body Systems and Investigations &amp; Data. The secure examination is not published here.</p>
         <button class="primary-button" type="button" data-v3-jump="v3-plan">Begin the pathway</button>
       </div>
       <div class="exam-v3-stats" aria-label="Practice structure">
@@ -66,6 +66,29 @@
           <article style="background:#fff;border-radius:18px;padding:18px"><strong><u>pH reminder</u></strong><div aria-label="pH scale from acid to alkali" style="height:28px;border-radius:8px;margin:18px 0 6px;background:linear-gradient(90deg,#d82432,#ff8b32,#ffd84d,#48a85b,#38a8c9,#465ac5,#7b3c91)"></div><div style="display:flex;justify-content:space-between;font-weight:800"><span>0<br><em>acid</em></span><span style="text-align:center">7<br><em>neutral</em></span><span style="text-align:right">14<br><em>alkali</em></span></div></article>
           <article style="background:#fff;border-radius:18px;padding:18px"><strong><u>Breathing pathway</u></strong><p style="font-size:1.05rem;line-height:1.8"><b>Exercise</b> → muscles need more <b><i>oxygen</i></b> → <b><i>breathing rate</i></b> rises → during recovery it falls toward resting rate.</p><p>In graphs, quote <b>two values</b> when you describe the change.</p></article>
         </div>
+        <section class="v3-task-lab" aria-labelledby="v3-task-title">
+          <div class="v3-tool-title"><span>EXAM TASK LAB</span><h3 id="v3-task-title">Practise the ways questions can be asked</h3><p>These use the same skills as the exam, but they are not the exam questions.</p></div>
+          <div class="v3-task-tabs" id="v3-task-tabs">
+            <button class="active" data-v3-task="match">Match-up</button>
+            <button data-v3-task="forces">Force arrows</button>
+            <button data-v3-task="shells">Electron shells</button>
+            <button data-v3-task="periodic">Periodic table</button>
+            <button data-v3-task="graphs">Graph &amp; data</button>
+          </div>
+          <div class="v3-task-stage" id="v3-task-stage"></div>
+        </section>
+        <style>
+          .v3-task-lab{margin-top:20px;background:#fff;border-radius:18px;padding:clamp(16px,3vw,26px)}
+          .v3-task-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+          .v3-task-tabs button,.v3-task-stage button,.v3-task-stage select,.v3-task-stage input{min-height:46px;font:inherit;border:2px solid #d7d4cf;border-radius:12px;background:#fff;padding:10px 12px}
+          .v3-task-tabs button.active{border-color:#d82432;background:#fff0f1;font-weight:800}
+          .v3-task-stage{border:2px solid #ebe8e3;border-radius:16px;padding:16px;background:#faf9f7}
+          .v3-task-stage h4{font-size:1.2rem;margin:0 0 8px}.v3-task-stage p{line-height:1.55}
+          .v3-task-rows{display:grid;gap:10px;margin:14px 0}.v3-task-row{display:grid;grid-template-columns:minmax(110px,1fr) minmax(170px,2fr);gap:10px;align-items:center}
+          .v3-task-row select,.v3-task-row input{width:100%}.v3-task-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+          .v3-task-feedback{font-weight:750;margin:12px 0 0}.v3-task-feedback[data-state="correct"]{color:#147344}.v3-task-feedback[data-state="retry"]{color:#a3202a}
+          @media(max-width:560px){.v3-task-row{grid-template-columns:1fr}.v3-task-tabs button{flex:1 1 44%}}
+        </style>
       </section>
 
       <section class="v3-step v3-practice" id="v3-practice">
@@ -74,7 +97,7 @@
           <p class="eyebrow dark">THE MAIN PRACTICE</p>
           <h2>24 marked questions.<br>Then six written responses.</h2>
           <p>Each set has six questions from every learning area. Read one question at a time and choose the best answer. Questions are held back between attempts so you practise the whole bank before it resets.</p>
-          <div class="v3-test-spec"><span><b>6</b> Forces</span><span><b>6</b> Chemistry</span><span><b>6</b> Body</span><span><b>6</b> Practice</span></div>
+          <div class="v3-test-spec"><span><b>6</b> Forces</span><span><b>6</b> Chemistry</span><span><b>6</b> Body</span><span><b>6</b> Data</span></div>
         </div>
         <div class="v3-test-stage" id="v3-test-stage">
           <div class="v3-launch">
@@ -101,7 +124,7 @@
     ['Chemistry in action','pH, the hydrogen test, filtration, evaporation and magnetism.'],
     ['Bones & movement','Long-bone structure, joints and antagonistic muscles.'],
     ['Breathing & exchange','Inhalation, diffusion and alveolus adaptations.'],
-    ['Science in Practice','Read tables and graphs, use pH results, choose separation methods and explain recovery.'],
+    ['Investigations & data','Match key words, identify variables, set up graphs, use values and explain recovery.'],
     ['Mixed practice','Complete one 24-question session in Test mode without notes.']
   ];
   const planKey = 'y10-exam-plan-v3';
@@ -144,6 +167,67 @@
     evaluate:['Improve','Say what to change and how it helps: “Repeat each test and calculate a mean so one unusual result has less effect.”']
   };
   document.querySelector('.v3-command-list').onclick=e=>{const button=e.target.closest('[data-v3-command]');if(!button)return;document.querySelectorAll('[data-v3-command]').forEach(b=>b.classList.toggle('active',b===button));const [title,text]=commandExamples[button.dataset.v3Command];document.querySelector('#v3-command-example').innerHTML=`<strong>${title}</strong><p>${text}</p>`};
+
+  const first20=[
+    ['H','hydrogen',1,'1'],['He','helium',2,'2'],['Li','lithium',3,'2,1'],['Be','beryllium',4,'2,2'],['B','boron',5,'2,3'],['C','carbon',6,'2,4'],['N','nitrogen',7,'2,5'],['O','oxygen',8,'2,6'],['F','fluorine',9,'2,7'],['Ne','neon',10,'2,8'],
+    ['Al','aluminium',13,'2,8,3'],['Si','silicon',14,'2,8,4'],['P','phosphorus',15,'2,8,5'],['Ar','argon',18,'2,8,8'],['K','potassium',19,'2,8,8,1'],['Ca','calcium',20,'2,8,8,2']
+  ];
+  const taskStage=document.querySelector('#v3-task-stage');
+  const feedback=(message,state)=>{const box=taskStage.querySelector('.v3-task-feedback');box.textContent=message;box.dataset.state=state};
+  const row=(label,name,options)=>`<label class="v3-task-row"><b>${label}</b><select data-task-input="${name}"><option value="">Choose…</option>${options.map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('')}</select></label>`;
+  function renderTask(kind){
+    if(kind==='match'){
+      const options=[['muscle-bone','Connects muscle to bone'],['bone-bone','Connects bone to bone'],['less-friction','Reduces friction at a joint'],['blood-cells','Makes blood cells']];
+      taskStage.innerHTML=`<h4>Match each structure to its job</h4><p>Use each meaning once. Then check all four.</p><div class="v3-task-rows">${row('Tendon','tendon',options)}${row('Ligament','ligament',options)}${row('Cartilage','cartilage',options)}${row('Marrow','marrow',options)}</div><div class="v3-task-actions"><button class="primary-button" data-task-check="match">Check match-up</button><button data-task-reset="match">Reset</button></div><p class="v3-task-feedback" aria-live="polite"></p>`;
+    }
+    if(kind==='forces'){
+      const directions=[['up','Up'],['down','Down'],['left','Left'],['right','Right']];
+      taskStage.innerHTML=`<h4>Force arrows on a moving sled</h4><p>A sled is pulled to the <b>right</b> at a <b>steady speed</b> on level ground. Choose the direction of each force arrow.</p><div class="v3-task-rows">${row('Weight','weight',directions)}${row('Support force','support',directions)}${row('Pulling force','pull',directions)}${row('Friction','friction',directions)}</div><div class="v3-task-actions"><button class="primary-button" data-task-check="forces">Check arrows</button><button data-task-reset="forces">Reset</button></div><p class="v3-task-feedback" aria-live="polite"></p>`;
+    }
+    if(kind==='shells'){
+      const atom=first20[whole(0,first20.length-1)];
+      taskStage.innerHTML=`<h4>Build the electron arrangement</h4><p><b>${atom[1][0].toUpperCase()+atom[1].slice(1)}</b> has atomic number <b>${atom[2]}</b>. Write its electron arrangement with commas.</p><div class="v3-task-row"><label for="v3-shell-input"><b>Arrangement</b></label><input id="v3-shell-input" data-task-input="shell" inputmode="numeric" placeholder="Example: 2,8,1"></div><input type="hidden" data-shell-answer="${atom[3]}"><div class="v3-task-actions"><button class="primary-button" data-task-check="shells">Check arrangement</button><button data-task-new="shells">New element</button></div><p class="v3-task-feedback" aria-live="polite"></p>`;
+    }
+    if(kind==='periodic'){
+      const atom=first20[whole(0,first20.length-1)];
+      const ask=whole(0,1)===0?'symbol':'name';
+      const prompt=ask==='symbol'?`What is the <b>symbol</b> for atomic number <b>${atom[2]}</b>?`:`Which <b>element</b> has the symbol <b>${atom[0]}</b>?`;
+      const answer=ask==='symbol'?atom[0]:atom[1];
+      taskStage.innerHTML=`<h4>Use the first-20-elements table</h4><p>${prompt}</p><div class="v3-task-row"><label for="v3-periodic-input"><b>Your answer</b></label><input id="v3-periodic-input" data-task-input="periodic" autocomplete="off"></div><input type="hidden" data-periodic-answer="${answer}"><div class="v3-task-actions"><button class="primary-button" data-task-check="periodic">Check answer</button><button data-task-new="periodic">New lookup</button></div><p class="v3-task-feedback" aria-live="polite"></p>`;
+    }
+    if(kind==='graphs'){
+      const axis=[['height','Ramp height (cm)'],['time','Travel time (s)'],['mean','Mean of all values'],['trial','Trial number']];
+      taskStage.innerHTML=`<h4>Set up a fair-test graph</h4><p>A student <b>changes ramp height</b> and <b>measures travel time</b>. Choose the correct axes.</p><div class="v3-task-rows">${row('x-axis','x',axis)}${row('y-axis','y',axis)}</div><p>The mean time falls from <b>5.8 s at 5 cm</b> to <b>2.6 s at 20 cm</b>. Complete the sentence:</p><div class="v3-task-row"><b>As ramp height increased…</b><select data-task-input="pattern"><option value="">Choose…</option><option value="decreased">travel time decreased</option><option value="increased">travel time increased</option><option value="same">travel time stayed the same</option></select></div><div class="v3-task-actions"><button class="primary-button" data-task-check="graphs">Check graph setup</button><button data-task-reset="graphs">Reset</button></div><p class="v3-task-feedback" aria-live="polite"></p>`;
+    }
+  }
+  document.querySelector('#v3-task-tabs').onclick=e=>{const button=e.target.closest('[data-v3-task]');if(!button)return;document.querySelectorAll('[data-v3-task]').forEach(x=>x.classList.toggle('active',x===button));renderTask(button.dataset.v3Task)};
+  taskStage.onclick=e=>{
+    const reset=e.target.closest('[data-task-reset]');if(reset){renderTask(reset.dataset.taskReset);return}
+    const fresh=e.target.closest('[data-task-new]');if(fresh){renderTask(fresh.dataset.taskNew);return}
+    const check=e.target.closest('[data-task-check]');if(!check)return;
+    const value=name=>taskStage.querySelector(`[data-task-input="${name}"]`)?.value.trim();
+    if(check.dataset.taskCheck==='match'){
+      const answers={tendon:'muscle-bone',ligament:'bone-bone',cartilage:'less-friction',marrow:'blood-cells'};const correct=Object.entries(answers).filter(([k,v])=>value(k)===v).length;
+      feedback(correct===4?'4/4 — secure. Each structure is matched to its job.':`${correct}/4 correct. Check: tendon means muscle to bone; ligament means bone to bone. Then try again.`,correct===4?'correct':'retry');
+    }
+    if(check.dataset.taskCheck==='forces'){
+      const answers={weight:'down',support:'up',pull:'right',friction:'left'};const correct=Object.entries(answers).filter(([k,v])=>value(k)===v).length;
+      feedback(correct===4?'4/4 — secure. Steady speed means the opposite arrows are balanced.':`${correct}/4 correct. Weight is down and support is up. Pull and friction act in opposite directions.`,correct===4?'correct':'retry');
+    }
+    if(check.dataset.taskCheck==='shells'){
+      const given=value('shell').replace(/\s+/g,'');const answer=taskStage.querySelector('[data-shell-answer]').dataset.shellAnswer;
+      feedback(given===answer?`Correct — ${answer}. The total number of electrons matches the atomic number.`:`Not yet. Fill 2 in the first shell, then up to 8, then up to 8. Try again.`,given===answer?'correct':'retry');
+    }
+    if(check.dataset.taskCheck==='periodic'){
+      const given=value('periodic').toLowerCase();const answer=taskStage.querySelector('[data-periodic-answer]').dataset.periodicAnswer.toLowerCase();
+      feedback(given===answer?`Correct — ${taskStage.querySelector('[data-periodic-answer]').dataset.periodicAnswer}.`:'Not yet. Use the atomic-number, symbol and element-name columns on the reference table.',given===answer?'correct':'retry');
+    }
+    if(check.dataset.taskCheck==='graphs'){
+      const correct=[value('x')==='height',value('y')==='time',value('pattern')==='decreased'].filter(Boolean).length;
+      feedback(correct===3?'3/3 — secure. Changed variable on x, measured variable on y, and the pattern uses the data.':`${correct}/3 correct. The changed variable goes on x; the measured variable goes on y.`,correct===3?'correct':'retry');
+    }
+  };
+  renderTask('match');
 
   const skills=[
     {q:'A student changes light intensity and measures plant growth. What is the independent variable?',o:['Plant growth','Light intensity','Plant species','Number of leaves'],a:1,e:'The independent variable is deliberately changed.'},
@@ -314,7 +398,7 @@
       ...drawQuestions(examBank.forces,6,'forces').map(x=>({...x,unit:'Forces & Motion'})),
       ...drawQuestions(examBank.chemistry,6,'chemistry').map(x=>({...x,unit:'Chemistry'})),
       ...drawQuestions(examBank.body,6,'body').map(x=>({...x,unit:'Body Systems'})),
-      ...drawQuestions(examBank.skills,6,'skills').map(x=>({...x,unit:'Science in Practice'}))
+      ...drawQuestions(examBank.skills,6,'skills').map(x=>({...x,unit:'Investigations & Data'}))
     ];index=0;score=0;answers=[];renderQuestion();
   }
   function renderQuestion(){
@@ -327,7 +411,7 @@
   }
   function renderResults(){
     const pct=Math.round(score/24*100),old=JSON.parse(localStorage.getItem(bestKey)||'null');if(!old||score>old.score)localStorage.setItem(bestKey,JSON.stringify({score,percent:pct,date:new Date().toISOString()}));
-    const units=['Forces & Motion','Chemistry','Body Systems','Science in Practice'];const breakdown=units.map(unit=>{const rows=answers.filter(x=>x.item.unit===unit);return{unit,score:rows.filter(x=>x.correct).length,total:rows.length}});const missed=answers.filter(x=>!x.correct);
+    const units=['Forces & Motion','Chemistry','Body Systems','Investigations & Data'];const breakdown=units.map(unit=>{const rows=answers.filter(x=>x.item.unit===unit);return{unit,score:rows.filter(x=>x.correct).length,total:rows.length}});const missed=answers.filter(x=>!x.correct);
     document.querySelector('#v3-test-stage').innerHTML=`<div class="v3-results"><p class="eyebrow dark">MARKED SECTION COMPLETE</p><div class="v3-result-hero"><strong>${score}<span>/24</span></strong><div><h3>${pct>=84?'Strong and exam ready':pct>=67?'A solid base — now close the gaps':'Use the breakdown to target revision'}</h3><p>Your best attempt stays on this device.</p></div></div><div class="v3-breakdown">${breakdown.map(x=>`<div><strong>${x.score}/${x.total}</strong><span>${x.unit}</span></div>`).join('')}</div><details class="v3-review"><summary>Review ${missed.length} missed question${missed.length===1?'':'s'}</summary>${missed.length?missed.map(x=>`<article><b>${x.item.unit}</b><p>${x.item.q}</p><small>${x.item.e}</small></article>`).join(''):'<p>Nothing missed — excellent retrieval.</p>'}</details><div class="v3-written-launch"><div><p class="eyebrow dark">NEXT: SIX WRITTEN RESPONSES</p><h3>Turn knowledge into full-mark explanations</h3><p>Write first, reveal the model, then self-assess.</p></div><button class="primary-button" id="v3-start-written">Begin written section</button></div><button class="v3-ghost" id="v3-retry">Try a fresh 24-question set</button></div>`;
     document.querySelector('#v3-start-written').onclick=()=>renderWritten(0,[]);document.querySelector('#v3-retry').onclick=startTest;
   }
